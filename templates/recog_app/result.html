@@ -1,0 +1,14 @@
+{% extends 'recog_app/base.html' %}
+
+{% block content %}
+<div class="col-6 offset-3">
+    {{ product.name }}
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+$('#iknowbtn').click(() => {
+    $('#iknowinput').slideToggle('400');
+  })
+{% endblock %}
