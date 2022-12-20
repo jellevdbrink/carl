@@ -1,8 +1,23 @@
-<html>
-    <head>
-        <title>Fruit/Vegetable recognizition app</title>
-    </head>
-    <body>
-        <h1>Welcome to {{ name }}!</h1>
-    </body>
-</html>
+{% extends 'recog_app/base.html' %}
+
+{% block content %}
+<div class="col-6 offset-3">
+    <div class="row mb-5">
+        <a class="btn btn-primary" href="{% url 'analyze' %}"><i class="bi bi-camera" style="font-size: 5em;"></i></a>
+    </div>
+    
+    <button id="iknowbtn" class="btn btn-secondary mb-3">I know the name of the ingredient</button>
+    <form id="iknowinput" action="/" method="post" class="input-group" style="display: none;">
+        {% csrf_token %}
+        {{ form.name }}
+        <button class="btn btn-primary" type='submit'><i class="bi bi-arrow-right"></i></button>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+$('#iknowbtn').click(() => {
+    $('#iknowinput').slideToggle('400');
+  })
+{% endblock %}
