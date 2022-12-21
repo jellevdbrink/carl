@@ -3,11 +3,21 @@ from django import forms
 class IngredientForm(forms.Form):
     name = forms.CharField(
         max_length=30, 
-        widget=forms.TextInput(attrs={'placeholder': 'Ingredient Name'})
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Ingredient Name', 
+            'class': 'form-control'
+        })
     )
 
-    def __init__(self, *args, **kwargs):
-        super(IngredientForm, self).__init__(*args, **kwargs)
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
-            
+
+class ImageForm(forms.Form):
+    image = forms.ImageField(
+        label='Take Picture',
+        widget=forms.ClearableFileInput(attrs={
+            'accept':"image/*", 
+            'capture':"environment",
+            'class': 'form-control',
+            'style': "visibility:hidden;",
+            'onchange': "form.submit()"
+        })
+    )
