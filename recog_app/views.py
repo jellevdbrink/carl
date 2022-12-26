@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 
 from recog_app.forms import ImageForm, IngredientForm
-from recog_app.models import Product
+from recog_app.models import products
 
 def index(request):
     if request.method == 'POST':
@@ -16,14 +16,17 @@ def index(request):
     }
     return render(request, 'recog_app/index.html', context)
 
-def result(request, name=''):
-    # Find/Create a Product instance based on the ingredient name
-    product = Product(name, 'test url', ['test recipe'], ['test video'])
+def result(request, name):
+    # Find a Product instance based on the ingredient name
+    for prod in products:
+        if prod.name == name:
+            context = {
+                'product': prod
+            }
+            return render(request, 'recog_app/result.html', context)
 
-    context = {
-        'product': product
-    }
-    return render(request, 'recog_app/result.html', context)
+    context = {}
+    return render(request, 'recog_app/unknown.html', context)
 
 def analyze(request):
     # Analyze the image and redirect to result page with the found ingredient name
@@ -39,8 +42,7 @@ def analyze(request):
             print(file_url)
             
             name = 'apple'
-                
-            print(f'The image depicts an {name} !')
+            
             return redirect('result', name)
 
     return redirect('index')
