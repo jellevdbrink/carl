@@ -52,7 +52,7 @@ products = [
         ]
     ),
     Product(
-        name='tomato', 
+        name='Tomato', 
         cat='vegetable', 
         description='A red vegetable. Commonly used for salads and on burgers.',
         certainty=0.929,
@@ -75,6 +75,48 @@ products = [
             CuttingMethod(
                 'Core',
                 'https://www.youtube.com/watch?v=dDt0L1-SaRg'
+            )
+        ]
+    ),
+    Product(
+        'Banana', 
+        'fruit', 
+        'A yellow fruit. Very nice in smoothies and on pancakes', 
+        0.829,
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/2324px-Banana-Single.jpg', 
+        [
+            Recipe(
+                'Banana Smoothie',
+                'https://kristineskitchenblog.com/banana-smoothie/'
+            )
+        ], 
+        [
+            CuttingMethod(
+                'Slice',
+                'https://www.youtube.com/watch?v=Fr3YBORM3eE'
+            )
+        ]
+    ),
+    Product(
+        'Bell pepper', 
+        'vegetable', 
+        'A red vegetable. Can be used everywhere', 
+        0.456,
+        'https://i5.walmartimages.com/asr/7be94a8e-9a5d-4f87-842f-5fe4084138ba.c95d36e140f5e0d492ca632b42e4543c.jpeg', 
+        [
+            Recipe(
+                'Quinoa',
+                'https://foodnetwork.co.uk/recipes/cucumber-bell-pepper-quinoa'
+            ),
+            Recipe(
+                'Mexican stuffed',
+                'https://www.tasteofhome.com/recipes/mexican-stuffed-peppers/'
+            )
+        ], 
+        [
+            CuttingMethod(
+                'Slice',
+                'https://www.youtube.com/watch?v=hZGqtmwboHU'
             )
         ]
     )
