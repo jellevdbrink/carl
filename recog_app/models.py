@@ -20,8 +20,8 @@ class Product:
     description: str
     certainty: float
     image_url: str
-    recipes: list[str]
-    cutting_methods: list[CuttingMethod]
+    recipes: any
+    cutting_methods: any
 
 products = [
     Product(
