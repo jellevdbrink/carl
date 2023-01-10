@@ -1,6 +1,7 @@
 from tensorflow import keras
 from keras_preprocessing import image
 import numpy as np
+import os
 
 from django.templatetags.static import static
 
@@ -8,7 +9,8 @@ IMG_PATH = "C:/Users/TeunH/Documents/Universiteit/BIT/Module 6/HCI/Project/Test/
 
 classes = ['apple', 'banana', 'carrot', 'cucumber', 'other', 'paprika', 'potato', 'tomato']
 
-model = keras.models.load_model(static('test.h5'))
+modelpath = os.paht.join('static', 'test.h5')
+model = keras.models.load_model(modelpath)
 
 def create_ordered_lists(predictions):
     ordered_classes = classes.copy()

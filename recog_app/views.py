@@ -2,6 +2,8 @@ from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 
+import os
+
 from recog_app.forms import ImageForm, IngredientForm
 from recog_app.models import products
 from recog_app.data  import predict
@@ -22,7 +24,7 @@ def result(request, product):
     # Find a Product instance based on the ingredient name
     if type(product) == str:
         for prod in products:
-            if prod.name == product:
+            if prod.name.lower() == product.lower():
                 product = prod
                 break
 
@@ -50,10 +52,10 @@ def analyze(request):
             image = form.cleaned_data['image']
             fss = FileSystemStorage()
             file = fss.save(image.name, image)
-            file_url = fss.url(file)
             # Met de file_url kan je nu alles doen met de picca wat je maar wil
+            img_url_full = os.path.join('media', file)
             
-            predictions, max, ordered_list = predict(file_url)
+            predictions, max, ordered_list = predict.predict(img_url_full)
             
             name = max[0]
             
