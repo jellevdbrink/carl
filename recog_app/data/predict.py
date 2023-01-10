@@ -37,8 +37,8 @@ def get_max(predictions):
 # [0]: List of predictions (only numbers corresponding with the variable classes) [0.2, 0.5, ..., 0.15]
 # [1]: List of predicted class (index 0) and the probability (index 1)  ['Cucumber', 0.95]
 # [2]: List of ordered classes and there probabilities [['Cucumber', ..., 'Other'], [0.8, ..., 0.0]]
-def predict(photo):
-    img = image.load_img(IMG_PATH, target_size=(250, 250))
+def predict(img_path):
+    img = image.load_img(img_path, target_size=(250, 250))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     images = np.vstack([x])
@@ -50,13 +50,14 @@ def predict(photo):
 
     return predictions, max, ordered_list
 
-predictions, max, ordered_list = predict(IMG_PATH)
+if __name__ == '__main__':
+    predictions, max, ordered_list = predict(IMG_PATH)
 
-if(max[1] == 1):
-    print(max[0])
-    print(f'{ordered_list[1][0]:.2%}')
-    # Return most_likely_class                      (Will return a string with the name of the category)
-else:
-    print(max[0])
-    print(f'{ordered_list[1][0]:.2%}')
-    # return dict                                   
+    if(max[1] == 1):
+        print(max[0])
+        print(f'{ordered_list[1][0]:.2%}')
+        # Return most_likely_class                      (Will return a string with the name of the category)
+    else:
+        print(max[0])
+        print(f'{ordered_list[1][0]:.2%}')
+        # return dict                                   

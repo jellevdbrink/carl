@@ -4,6 +4,7 @@ from django.core.files.storage import FileSystemStorage
 
 from recog_app.forms import ImageForm, IngredientForm
 from recog_app.models import products
+from recog_app.data  import predict
 
 def index(request):
     if request.method == 'POST':
@@ -52,9 +53,9 @@ def analyze(request):
             file_url = fss.url(file)
             # Met de file_url kan je nu alles doen met de picca wat je maar wil
             
-            print(file_url)
+            predictions, max, ordered_list = predict(file_url)
             
-            name = 'apple'
+            name = max[0]
             
             return redirect('result', name)
 
