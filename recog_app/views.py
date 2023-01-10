@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 
@@ -16,16 +17,28 @@ def index(request):
     }
     return render(request, 'recog_app/index.html', context)
 
-def result(request, name):
+def result(request, product):
     # Find a Product instance based on the ingredient name
-    for prod in products:
-        if prod.name == name:
-            context = {
-                'product': prod
-            }
-            return render(request, 'recog_app/result.html', context)
+    if type(product) == str:
+        for prod in products:
+            if prod.name == product:
+                product = prod
+                break
 
-    context = {}
+    if type(product) == str:
+        return HTTPResponse('We cannot find the product')
+    
+    if product.certainty > 0.7:
+        context = {
+            'ingredient_form': IngredientForm(),
+            'product': prod
+        }
+        return render(request, 'recog_app/result.html', context)
+
+    # Hardcoded array of products
+    context = {
+        'products': products
+    }
     return render(request, 'recog_app/unknown.html', context)
 
 def analyze(request):

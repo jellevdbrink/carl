@@ -1,7 +1,14 @@
 {% extends 'recog_app/base.html' %}
 
 {% block content %}
-<div class="card">
+<div class="bg-warning rounded">
+  <h4>We are not completely sure...</h4>
+  <p>Here are some options</p>
+</div>
+
+
+{% for product in products %}
+<div class="card my-2">
     <p class="card-header">{{ product.cat }}</p>
     <img src="{{ product.image_url }}" class="card-img-top" alt="image of a {{ product.name }}">
     <div class="card-body">
@@ -19,22 +26,5 @@
         {% endfor %}
     </ul>
 </div>
-
-<div>
-    <button id="notcorrectbtn" class="btn btn-secondary m-3">This is not the correct ingredient</button>
-    <form id="notcorrectinput" action="/" method="post" class="input-group mb-3" style="display: none;">
-      {% csrf_token %}
-      {{ ingredient_form.name.errors }}
-      {{ ingredient_form.name }}
-      <button class="btn btn-primary" type='submit'><i class="bi bi-arrow-right"></i></button>
-  </form>
-</div>
-{% endblock %}
-
-{% block javascript %}
-$('#notcorrectbtn').click(() => {
-    $('#notcorrectinput').slideToggle(400, () => {
-      $(window).scrollTop($('#notcorrectinput').offset().top);;
-    });
-});
+{% endfor %}
 {% endblock %}
