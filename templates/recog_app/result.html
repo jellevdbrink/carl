@@ -1,11 +1,11 @@
 {% extends 'recog_app/base.html' %}
 
 {% block content %}
-<div class="card">
+<div class="card mb-3">
     <p class="card-header">{{ product.cat }}</p>
     <img src="{{ product.image_url }}" class="card-img-top" alt="image of a {{ product.name }}">
     <div class="card-body">
-        <h5 class="card-title">{{ product.name|upper }} ({% widthratio product.certainty 1 100 %}%)</h5>
+        <h5 class="card-title">{{ product.name|upper }}{% if certainty %} ({% widthratio certainty 1 100 %}%){% endif %}</h5>
       <p class="card-text">{{ product.description }}</p>
     </div>
     <ul class="list-group list-group-flush">
@@ -20,6 +20,7 @@
     </ul>
 </div>
 
+{% if certainty %}
 <div>
     <button id="notcorrectbtn" class="btn btn-secondary m-3">This is not the correct ingredient</button>
     <form id="notcorrectinput" action="/" method="post" class="input-group mb-3" style="display: none;">
@@ -29,6 +30,7 @@
       <button class="btn btn-primary" type='submit'><i class="bi bi-arrow-right"></i></button>
   </form>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block javascript %}

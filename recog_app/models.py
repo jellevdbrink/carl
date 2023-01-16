@@ -18,7 +18,6 @@ class Product:
     name: str
     cat: str
     description: str
-    certainty: float
     image_url: str
     recipes: any
     cutting_methods: any
@@ -28,7 +27,6 @@ products = [
         name='apple', 
         cat='fruit', 
         description='A red fruit, very nice tasting. Originates from NL.',
-        certainty=0.635,
         image_url='https://media.istockphoto.com/id/184276818/nl/foto/red-apple.jpg?s=612x612&w=0&k=20&c=SX8NohTBbDQ1Tz50uFjuwr0EAuYXqgzIbZuwi94i3bw=', 
         recipes=[
             Recipe(
@@ -55,7 +53,6 @@ products = [
         name='Tomato', 
         cat='vegetable', 
         description='A red vegetable. Commonly used for salads and on burgers.',
-        certainty=0.929,
         image_url='https://t4.ftcdn.net/jpg/02/32/98/31/360_F_232983161_9lmUyHKnWbLW0vQPvWCrp5R5DSpexhbx.jpg', 
         recipes=[
             Recipe(
@@ -81,8 +78,7 @@ products = [
     Product(
         'Banana', 
         'fruit', 
-        'A yellow fruit. Very nice in smoothies and on pancakes', 
-        0.829,
+        'A yellow fruit. Very nice in smoothies and on pancakes',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/2324px-Banana-Single.jpg', 
         [
             Recipe(
@@ -100,8 +96,7 @@ products = [
     Product(
         'Bell pepper', 
         'vegetable', 
-        'A red vegetable. Can be used everywhere', 
-        0.456,
+        'A red vegetable. Can be used everywhere',
         'https://i5.walmartimages.com/asr/7be94a8e-9a5d-4f87-842f-5fe4084138ba.c95d36e140f5e0d492ca632b42e4543c.jpeg', 
         [
             Recipe(
@@ -121,4 +116,8 @@ products = [
         ]
     )
 ]
-    
+
+def find_product(prod_name):
+    for prod in products:
+        if prod.name.lower() == prod_name.lower():
+            return prod
