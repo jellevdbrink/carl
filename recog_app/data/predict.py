@@ -9,7 +9,7 @@ IMG_PATH = "C:/Users/TeunH/Documents/Universiteit/BIT/Module 6/HCI/Project/Test/
 
 classes = ['apple', 'banana', 'carrot', 'cucumber', 'other', 'paprika', 'potato', 'tomato']
 
-modelpath = os.paht.join('static', 'test.h5')
+modelpath = os.path.join('/Users/timangevare/carl/recog_app/static', 'test.h5')
 model = keras.models.load_model(modelpath)
 
 def create_ordered_lists(predictions):
@@ -52,6 +52,7 @@ def predict(img_path):
     ordered_classes, ordered_predictions = create_ordered_lists(predictions)
     ordered_list = [ordered_classes, ordered_predictions]
 
+    # print(ordered_list)
     return predictions, max, ordered_list
 
 if __name__ == '__main__':

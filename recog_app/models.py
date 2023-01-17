@@ -94,7 +94,7 @@ products = [
         ]
     ),
     Product(
-        'Bell pepper', 
+        'Paprika',
         'vegetable', 
         'A red vegetable. Can be used everywhere',
         'https://i5.walmartimages.com/asr/7be94a8e-9a5d-4f87-842f-5fe4084138ba.c95d36e140f5e0d492ca632b42e4543c.jpeg', 

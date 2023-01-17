@@ -1,7 +1,9 @@
 {% extends 'recog_app/base.html' %}
 
 {% block content %}
-<div class="card mb-3">
+<a href="/" class="btn btn-primary">Try again</a>
+
+<div class="card my-3">
     <p class="card-header">{{ product.cat }}</p>
     <img src="{{ product.image_url }}" class="card-img-top" alt="image of a {{ product.name }}">
     <div class="card-body">
