@@ -114,6 +114,54 @@ products = [
                 'https://www.youtube.com/watch?v=hZGqtmwboHU'
             )
         ]
+    ),
+    Product(
+        name='Cucumber', 
+        cat='vegetable', 
+        description='A green vegetable. Long and used for a lot of things.',
+        image_url='https://www.creedfoodservice.co.uk/media/catalog/product/cache/d781aa45b0623b3b1e7a18c482a05dd6/7/e/7e355a4b3ad12ed0d91c734d6022f097.jpg', 
+        recipes=[
+            Recipe(
+                'Salad',
+                'https://www.bbcgoodfood.com/recipes/tomato-cucumber-coriander-salad'
+            )
+        ], 
+        cutting_methods=[
+            CuttingMethod(
+                'Chinese style',
+                'https://www.youtube.com/watch?v=7cPRq-iEZis'
+            ),
+            CuttingMethod(
+                'Sushi',
+                'https://www.youtube.com/watch?v=GxK04UlYsZQ'
+            )
+        ]
+    ),
+    Product(
+        name='Carrot', 
+        cat='vegetable', 
+        description='A orange vegetable. Long and used for a lot of things.',
+        image_url='https://www.alimentarium.org/sites/default/files/media/image/2016-10/AL012-02%20carotte_0.jpg', 
+        recipes=[
+            Recipe(
+                'Cake',
+                'https://www.bbcgoodfood.com/recipes/yummy-scrummy-carrot-cake-recipe'
+            ),
+            Recipe(
+                'Buttered',
+                'https://www.bbcgoodfood.com/recipes/buttered-baby-carrots'
+            )
+        ], 
+        cutting_methods=[
+            CuttingMethod(
+                'Dice',
+                'https://www.youtube.com/watch?v=lzOTXFp2mwM'
+            ),
+            CuttingMethod(
+                'Julienne',
+                'https://www.youtube.com/watch?v=KGNKz1WAiFQ'
+            )
+        ]
     )
 ]
 
