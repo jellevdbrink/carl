@@ -7,13 +7,17 @@
     <p class="card-header">{{ product.cat }}</p>
     <img src="{{ product.image_url }}" class="card-img-top" alt="image of a {{ product.name }}">
     <div class="card-body">
-        <h5 class="card-title">{{ product.name|upper }}{% if certainty %} ({% widthratio certainty 1 100 %}%){% endif %}</h5>
+        <h5 class="card-title">{{ product.name.0|upper }}{% if certainty %} ({% widthratio certainty 1 100 %}%){% endif %}</h5>
       <p class="card-text">{{ product.description }}</p>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item list-group-item-secondary">Cutting methods</li>
         {% for cm in product.cutting_methods %}
-        <li class="list-group-item"><a href="{{ cm.url }}" target="_blank">{{ cm.name }}</a></li>
+        <!-- <li class="list-group-item"><a href="{{ cm.url }}" target="_blank">{{ cm.name }}</a></li> -->
+        <hr>
+        <p><u>{{ cm.name }}</u></p>
+        <iframe class="mb-3" width="80%" src="{{ cm.url }}" style="margin-left: 10%">
+        </iframe>
         {% endfor %}
       <li class="list-group-item list-group-item-secondary">Recipes</li>
         {% for rc in product.recipes %}

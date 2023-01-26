@@ -15,7 +15,7 @@ class Recipe:
 
 @dataclass
 class Product:
-    name: str
+    name: any
     cat: str
     description: str
     image_url: str
@@ -24,7 +24,7 @@ class Product:
 
 products = [
     Product(
-        name='apple', 
+        name=['apple', 'apples'], 
         cat='fruit', 
         description='A red fruit, very nice tasting. Originates from NL.',
         image_url='https://media.istockphoto.com/id/184276818/nl/foto/red-apple.jpg?s=612x612&w=0&k=20&c=SX8NohTBbDQ1Tz50uFjuwr0EAuYXqgzIbZuwi94i3bw=', 
@@ -41,16 +41,16 @@ products = [
         cutting_methods=[
             CuttingMethod(
                 'Julienne',
-                'https://www.youtube.com/watch?v=sPTIQX7iP-Q',
+                'https://www.youtube.com/embed/sPTIQX7iP-Q',
             ),
             CuttingMethod(
                 'Slices',
-                'https://www.youtube.com/watch?v=H_M5cgWIQZU'
+                'https://www.youtube.com/embed/H_M5cgWIQZU'
             )
         ]
     ),
     Product(
-        name='Tomato', 
+        name=['tomato', 'tomatos'], 
         cat='vegetable', 
         description='A red vegetable. Commonly used for salads and on burgers.',
         image_url='https://t4.ftcdn.net/jpg/02/32/98/31/360_F_232983161_9lmUyHKnWbLW0vQPvWCrp5R5DSpexhbx.jpg', 
@@ -67,16 +67,16 @@ products = [
         cutting_methods=[
             CuttingMethod(
                 'Slice',
-                'https://www.youtube.com/watch?v=T0xVthFSJBg'
+                'https://www.youtube.com/embed/T0xVthFSJBg'
             ),
             CuttingMethod(
                 'Core',
-                'https://www.youtube.com/watch?v=dDt0L1-SaRg'
+                'https://www.youtube.com/embed/dDt0L1-SaRg'
             )
         ]
     ),
     Product(
-        'Banana', 
+        ['banana', 'bananas'], 
         'fruit', 
         'A yellow fruit. Very nice in smoothies and on pancakes',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/2324px-Banana-Single.jpg', 
@@ -89,12 +89,12 @@ products = [
         [
             CuttingMethod(
                 'Slice',
-                'https://www.youtube.com/watch?v=Fr3YBORM3eE'
+                'https://www.youtube.com/embed/Fr3YBORM3eE'
             )
         ]
     ),
     Product(
-        'Paprika',
+        ['paprika', 'paprikas', 'bell pepper', 'bell peppers'],
         'vegetable', 
         'A red vegetable. Can be used everywhere',
         'https://i5.walmartimages.com/asr/7be94a8e-9a5d-4f87-842f-5fe4084138ba.c95d36e140f5e0d492ca632b42e4543c.jpeg', 
@@ -111,12 +111,12 @@ products = [
         [
             CuttingMethod(
                 'Slice',
-                'https://www.youtube.com/watch?v=hZGqtmwboHU'
+                'https://www.youtube.com/embed/hZGqtmwboHU'
             )
         ]
     ),
     Product(
-        name='Cucumber', 
+        name=['cucumber', 'cucumbers'], 
         cat='vegetable', 
         description='A green vegetable. Long and used for a lot of things.',
         image_url='https://www.creedfoodservice.co.uk/media/catalog/product/cache/d781aa45b0623b3b1e7a18c482a05dd6/7/e/7e355a4b3ad12ed0d91c734d6022f097.jpg', 
@@ -129,16 +129,16 @@ products = [
         cutting_methods=[
             CuttingMethod(
                 'Chinese style',
-                'https://www.youtube.com/watch?v=7cPRq-iEZis'
+                'https://www.youtube.com/embed/7cPRq-iEZis'
             ),
             CuttingMethod(
                 'Sushi',
-                'https://www.youtube.com/watch?v=GxK04UlYsZQ'
+                'https://www.youtube.com/embed/GxK04UlYsZQ'
             )
         ]
     ),
     Product(
-        name='Carrot', 
+        name=['carrot', 'carrots'], 
         cat='vegetable', 
         description='A orange vegetable. Long and used for a lot of things.',
         image_url='https://www.alimentarium.org/sites/default/files/media/image/2016-10/AL012-02%20carotte_0.jpg', 
@@ -155,11 +155,11 @@ products = [
         cutting_methods=[
             CuttingMethod(
                 'Dice',
-                'https://www.youtube.com/watch?v=lzOTXFp2mwM'
+                'https://www.youtube.com/embed/lzOTXFp2mwM'
             ),
             CuttingMethod(
                 'Julienne',
-                'https://www.youtube.com/watch?v=KGNKz1WAiFQ'
+                'https://www.youtube.com/embed/KGNKz1WAiFQ'
             )
         ]
     )
@@ -167,5 +167,5 @@ products = [
 
 def find_product(prod_name):
     for prod in products:
-        if prod.name.lower() == prod_name.lower():
+        if prod_name.lower() in prod.name:
             return prod

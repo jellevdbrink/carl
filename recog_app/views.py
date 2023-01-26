@@ -24,7 +24,7 @@ def index(request):
 def result(request, product_name, certainty=None, prediction_list=None):
     product = find_product(product_name)
     
-    if not product or product_name.lower() not in ['apple', 'banana', 'cucumber', 'carrot', 'paprika', 'tomato']:
+    if not product:
         return render(request, 'recog_app/error67845.html', {})
 
     # To generate 'real looking' results
